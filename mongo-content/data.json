@@ -1,0 +1,28 @@
+* bütün image ları sil
+* alpine yada alpine:latest indir
+* alpine ı çalıştır ve interactive bağlan
+* mc yükle "apk add mc"
+* redis yükle
+* exit
+* docker commit et
+* 2 container çalıştır isimlerini ver
+- network yarat , containerları içinde çalıştır. sonra ping at
+
+
+-------
+busybox ile sleep 300 eden 4 tane pod deployment yarat
+
+deployment lara bak
+describe ile bak
+replicaset lere bak
+pod lara bak 
+
+sonra deployment ı sil
+
+----
+
+deployment için bir service yaz
+sonrasında ingress.yaml ile ingress oluştur ve dışarıdan request yap
+
+
+servicename.namespace.svc.cluster.local:port
