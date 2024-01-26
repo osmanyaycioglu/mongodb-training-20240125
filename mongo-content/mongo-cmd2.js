@@ -96,7 +96,7 @@ db.customer.insertOne(
 
 db.customer.updateOne(
     {
-        "_id": 1
+        "_id": 2
     },
     {
         "$min": { "heightcm": 175 }
@@ -105,10 +105,25 @@ db.customer.updateOne(
 
 db.customer.updateOne(
     {
-        "_id": 1
+        "_id": 2
     },
     {
         "$max": { "heightcm": 175 }
     }
 )
 
+db.customer.updateOne(
+    {
+        "_id": 2
+    },
+    {
+        "$mul": { "heightcm": 2 }
+    }
+)
+
+db.customer.updateOne(
+    { _id: 1 },
+    [
+        { $set: { lastModified: "$$NOW", cancellation: { reason: "user request" }, status: "D" } }
+    ]
+)

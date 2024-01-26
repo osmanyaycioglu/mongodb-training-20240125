@@ -131,9 +131,9 @@ db.car.aggregate(
             $unwind: "$variations"
         },
         {
-            $bucket: {
+            $bucketAuto: {
                 groupBy: "$year",
-                boundaries : 10,
+                buckets : 10,
                 output : {
                     count: { $sum: 1 },
                     price: { $avg: "$price" }

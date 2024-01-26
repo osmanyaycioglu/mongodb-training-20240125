@@ -252,8 +252,109 @@ db.customer.find(
 db.customer.find(
     {
         "$or": [
-            { "$and": [{ "heightcm": { "$gt": 170 } }, { "weightkg": { "$lte": 90 }] },
-            { "firname": "ayşe" }
+            {
+                "$and": [
+                    { "heightcm": { "$gt": 170 } },
+                    { "weightkg": { "$lte": 90 } }
+                ]
+            },
+            { "firstName": "ayşe" }
         ]
     }
 )
+
+db.customer.insertOne(
+    {
+        "firstName": "test",
+        "lastName": "yaycıoğlu",
+        "heightcm": 200,
+        "weightkg": 90,
+        "birth": "1970-11-11",
+        "middleName": "tulgar",
+        "createDate": ISODate("2023-05-18T14:10:30.000Z"),
+        "createDate2": new Date(),
+        "defaultAddress": {
+            "city": "istanbul",
+            "district": "ataşehir",
+            "street": "ataturk"
+        }
+    }
+)
+
+db.customer.find(
+    {
+        "createDate": { "$gt": ISODate("2023-01-01T00:00:00.000Z") }
+    }
+)
+
+db.customer.find(
+    {
+        "firstName": { "$in": ["osman", "ali"] }
+    }
+)
+
+db.customer.find(
+    {
+        "firstName": { "$exists": "true", "$nin": ["osman", "ali"] }
+    }
+)
+
+db.customer.find(
+    {
+        "firstName": { "$type": 1 }
+    }
+)
+
+db.customer.find(
+    {
+        "firstName": { "$type": "double" }
+    }
+)
+
+db.customer.insertOne(
+    {
+        "firstName": 10.5,
+        "lastName": "yaycıoğlu",
+    }
+)
+
+db.customer.insertOne(
+    {
+        "firstName": NumberLong(100),
+        "lastName": "yaycıoğlu",
+    }
+)
+
+db.customer.find(
+    {
+        "firstName": {
+            "$exists": "true", "$nin": ["osman", "ali"]
+        },
+    },
+    {
+        "total":  {"$sum" : ["$heightcm","$weightkg"]} ,
+        _id: 0,
+        "firstName": 1,
+        "lastName": 1,
+        
+    }
+)
+
+
+db.customer.find(
+    {
+        "firstName": {
+            "$exists": "true", "$nin": ["osman", "ali"]
+        },
+    }
+).sort({"firstname" : 1,"lastName":1})
+
+db.customer.find(
+    {
+        "firstName": {
+            "$exists": "true", 
+            "$type":"string",
+            "$nin": ["osman", "ali"]
+        },
+    }
+).sort({"firstname" : -1}).limit(2).skip(2)

@@ -5,3 +5,20 @@ employee data sı yarat
  insertMany ile 2-3 tane insert et
  ve find ile gör
  sonra bir kaçını deleteOne ile delete et
+
+ -------------
+
+ employee
+    daha karışık dat ekle
+    sonra $lt, $gt, $in, $nin , $exist, $type ile arama yap
+    sonrasında update $set , $unset, $inc , $rename ile update işlemleri yap
+    multiple update işlemi yap
+--------------
+
+movies
+    year a göre kaç tane movie var groupla
+    year aralıklarına göre kaç tane movie var groupla
+    year otomatik aralıklara göre kaç tane movie var groupla
+
+    year a göre kaç tane movie var groupla ve bir aray yarat hangi filmler olduğunu buraya yaz
+
