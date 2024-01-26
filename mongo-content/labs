@@ -1,0 +1,7 @@
+--------------------
+
+employee data sı yarat
+ insertOne ile bir tane
+ insertMany ile 2-3 tane insert et
+ ve find ile gör
+ sonra bir kaçını deleteOne ile delete et
