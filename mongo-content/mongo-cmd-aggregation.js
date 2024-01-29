@@ -142,3 +142,39 @@ db.car.aggregate(
         }
     ]
 )
+
+
+db.car.aggregate(
+    [
+        {
+            $lookup: {
+                from: "orders",
+                localField: "_id",
+                foreignField: "car_id",
+                as: "orders"
+            }
+        },
+        {
+            $limit : 40
+        }
+    ]
+)
+
+db.orders.aggregate(
+    [
+        {
+            $lookup: {
+                from: "car",
+                localField: "car_id",
+                foreignField: "_id",
+                as: "car"
+            }
+        },
+        {
+            $unwind : "$car"
+        },
+        {
+            $limit : 40
+        }
+    ]
+)
